@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/brayanrv/TEC/Github/sockets/GUI/mainwindow.cpp
+mainwindow.h
+/home/brayanrv/TEC/Github/sockets/GUI/mainwindow.h
+gtkmm-3.0/gtkmm.h
+-
+glibmm.h
+-
+
+/home/brayanrv/TEC/Github/sockets/GUI/mainwindow.h
+
