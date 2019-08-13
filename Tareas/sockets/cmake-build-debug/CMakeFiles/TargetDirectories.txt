@@ -1,0 +1,3 @@
+/home/brayanrv/TEC/Github/sockets/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/brayanrv/TEC/Github/sockets/cmake-build-debug/CMakeFiles/sockets.dir
+/home/brayanrv/TEC/Github/sockets/cmake-build-debug/CMakeFiles/edit_cache.dir

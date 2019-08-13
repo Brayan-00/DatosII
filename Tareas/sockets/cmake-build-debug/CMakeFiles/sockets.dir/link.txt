@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/sockets.dir/GUI/main.cpp.o CMakeFiles/sockets.dir/GUI/mainwindow.cpp.o CMakeFiles/sockets.dir/Client/Client.cpp.o CMakeFiles/sockets.dir/Server/Server.cpp.o  -o sockets 
