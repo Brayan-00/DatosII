@@ -15,6 +15,8 @@ public:
     Mainwindow();
     virtual ~Mainwindow();
 
+
+
 protected:
     //Signal handlers:
     void    on_button_s();
@@ -23,7 +25,10 @@ protected:
     Gtk::Button sendBtn;
     Gtk::VBox mainBx;
     Gtk::HBox textBx;
+    //TextView related data
     Gtk::TextView msgRcv;
+    Glib::RefPtr<Gtk::TextBuffer> textBfr;
+
     Gtk::Entry msgEnt;
 };
 
