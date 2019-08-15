@@ -15,11 +15,30 @@ public:
     Mainwindow();
     virtual ~Mainwindow();
 
-
-
 protected:
+
+    void on_cell_data_extra(const Gtk::TreeModel::const_iterator& iter);
+
     //Signal handlers:
     void    on_button_s();
+    void    on_combo_changed();
+
+    //Tree model columns:
+    class ModelColumns : public Gtk::TreeModel::ColumnRecord{
+    public:
+        ModelColumns(){
+            add(m_col_list); add(m_col_tree); }
+
+        Gtk::TreeModelColumn<Glib::ustring> m_col_list;
+        Gtk::TreeModelColumn<Glib::ustring> m_col_tree;
+    };
+    ModelColumns m_Columns;
+
+    //Child widgets:
+    Gtk::ComboBox m_Combo;
+    Gtk::CellRenderText m_cell;
+    Glib::RefPtr<Gtr::ListStore> m_refTreeModel;
+
 
     //Member widgets:
     Gtk::Button sendBtn;
@@ -28,8 +47,14 @@ protected:
     //TextView related data
     Gtk::TextView msgRcv;
     Glib::RefPtr<Gtk::TextBuffer> textBfr;
+    //Selecting data structure related data
+    Gtk::ListBox selectStct;
+    Gtk::Label selectInst;
+    Gtk::VBox selecCnt;
 
     Gtk::Entry msgEnt;
+
+
 };
 
 
