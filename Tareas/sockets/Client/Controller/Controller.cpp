@@ -6,9 +6,17 @@
 #include "include/rapidjson/rapidjson.h"
 
 #include "include/rapidjson/document.h"
+#include "include/rapidjson/prettywriter.h"
 
-char message[];
+using namespace rapidjson;
+using namespace std;
 
+char message[] = "{}";
+
+Document document;
+void test(){
+
+}
 int main(){
 
 }
