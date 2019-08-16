@@ -6,6 +6,8 @@
 #include <sys/socket.h>
 #include <zconf.h>
 #include <arpa/inet.h>
+#include "Controller/Controller.cpp"
+
 
 #define MAX 80
 #define PORT 8080
@@ -23,6 +25,8 @@ void func(int sockfd)
         write(sockfd, buff, sizeof(buff));
         bzero(buff, sizeof(buff));
         read(sockfd, buff, sizeof(buff));
+        printf("Se lee el Json:");
+        readJson(buff);
         printf("From Server : %s", buff);
         if ((strncmp(buff, "exit", 4)) == 0) {
             printf("Client Exit...\n");
