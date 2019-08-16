@@ -41,6 +41,7 @@ void edit(int position, int value){
             ptr = ptr->next;
     }
     ptr->data = value;
+
 }
 int getV_position(int position){
     Node* ptr = head;
@@ -49,6 +50,7 @@ int getV_position(int position){
     }
     std::cout<<"El valor del nodo en posición "<<position<<" es:"<<ptr->data<<"\n";
     return ptr->data;
+
 }
 void print(){
     struct Node *node = head;
@@ -57,6 +59,7 @@ void print(){
         node = node->next;
     }
     std::cout<<"\n";
+
 }
 
 int main(){
@@ -66,6 +69,9 @@ int main(){
     edit(0,2);
     print();
     getV_position(1);
+    deleteNode();
+    print();
+
 
 }
 
