@@ -6,6 +6,7 @@
 #include <sys/types.h>
 #include <zconf.h>
 #include <cstdio>
+#include "Controller/Controller.cpp"
 
 #define MAX 80
 #define PORT 8080
@@ -24,6 +25,8 @@ void func(int sockfd)
         read(sockfd, buff, sizeof(buff));
         // print buffer which contains the client contents
         printf("From client: %s\t To client : ", buff);
+        printf("Se lee el Json:");
+        readJson(buff);
         bzero(buff, MAX);
         n = 0;
         // copy server message in the buffer
