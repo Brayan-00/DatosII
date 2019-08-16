@@ -5,6 +5,9 @@
 #include "Controller.h"
 #include "include/rapidjson/rapidjson.h"
 
+#include "include/rapidjson/document.h"
+
+char message[];
 
 int main(){
 
