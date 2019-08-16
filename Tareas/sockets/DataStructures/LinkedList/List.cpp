@@ -41,7 +41,15 @@ void edit(int position, int value){
             ptr = ptr->next;
     }
     ptr->data = value;
-    free(ptr);
+
+}
+int getV_position(int position){
+    Node* ptr = head;
+    for(int i = 0; i<position; i++){
+        ptr = ptr->next;
+    }
+    std::cout<<"El valor del nodo en posición "<<position<<" es:"<<ptr->data<<"\n";
+    return ptr->data;
 
 }
 void print(){
@@ -50,14 +58,20 @@ void print(){
         std::cout<< node->data <<", ";
         node = node->next;
     }
+    std::cout<<"\n";
+
 }
 
 int main(){
     add(3);
     add(4);
     print();
+    edit(0,2);
+    print();
+    getV_position(1);
     deleteNode();
     print();
+
 
 }
 
