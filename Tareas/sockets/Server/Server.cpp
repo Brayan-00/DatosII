@@ -8,14 +8,20 @@
 #include <cstdio>
 #include "Controller/Controller.cpp"
 
-#define MAX 80
+#define MAX 300
 #define PORT 8080
 #define SA struct sockaddr
+
+
+
+
 
 // Function designed for chat between client and server. 
 void func(int sockfd)
 {
     char buff[MAX];
+    char json[MAX + 2];
+
     int n;
     // infinite loop for chat
     for (;;) {
@@ -24,20 +30,28 @@ void func(int sockfd)
         // read the message from client and copy it in buffer
         read(sockfd, buff, sizeof(buff));
         // print buffer which contains the client contents
-        printf("From client: %s\t To client : ", buff);
-        printf("Se lee el Json:");
-        readJson(buff);
+        printf("From client: %s",buff);
+        //fillArray(json,buff);
+        printf("Se lee el Json: ");
+        readJson(json);
+        printf("\n");
+        printf("To client : ");
+
+
         bzero(buff, MAX);
-        n = 0;
+        n = 1;
         // copy server message in the buffer
-        while ((buff[n++] = getchar()) != '\n')
-            ;
+        buff[0] = '{';
+        while ((buff[n++] =  getchar()) != '\n');
+        buff[n++] = '}';
+
+
 
         // and send that buffer to client
         write(sockfd, buff, sizeof(buff));
 
         // if msg contains "Exit" then server exit and chat ended.
-        if (strncmp("exit", buff, 4) == 0) {
+        if (strncmp("{exit}", buff, 4) == 0) {
             printf("Server Exit...\n");
             break;
         }
@@ -96,4 +110,6 @@ int main()
 
     // After chatting close the socket
     close(sockfd);
-} 
+}
+
+

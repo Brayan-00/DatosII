@@ -1,8 +1,8 @@
 #include "include/rapidjson/reader.h"
 #include "include/rapidjson/writer.h"
 #include "include/rapidjson/stringbuffer.h"
-#include "/sockets/DataStructures/LinkedList/List.cpp"
-#include "/sockets/DataStructures/BinaryTree/BinaryTree.cpp"
+#include "/home/brayanrv/TEC/Github/Tareas/Tareas/sockets/DataStructures/LinkedList/List.cpp"
+#include "/home/brayanrv/TEC/Github/Tareas/Tareas/sockets/DataStructures/BinaryTree/BinaryTree.cpp"
 #include <iostream>
 
 using namespace rapidjson;
@@ -75,5 +75,8 @@ void readJson(const char json[]){
 }
 
 void writeList(){
+
+}
+void writeTree(){
 
 }
