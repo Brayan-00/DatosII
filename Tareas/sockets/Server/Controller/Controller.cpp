@@ -74,7 +74,30 @@ void readJson(const char json[]){
     reader.Parse(ss, handler);
 }
 
-void writeList(){
+void writeList(char type[], int data[], json[size]){
+    //size = sizeof(data) + sizeof(type) + 10
+    char json[size];
+    int n = 0;
+    json[n] = '{';
+    json[n++] = ' \ ';
+    json[n++] = '"';
+    for (int i = 1; i < sizeof(type);i++) {
+        json[n++] = type[i-1];
+    }
+    json[n++] = ' \ ';
+    json[n++] = '"';
+    json[n++] = ' ';
+    json[n++] = ':';
+    json[n++] = ' ';
+    for (int j = 0; j < sizeof(data) ; j++) {
+        json[n++] = data[j];
+    }
+    json[n++] = '"';
+    json[n] = '}';
+
+
+
+
 
 }
 void writeTree(){

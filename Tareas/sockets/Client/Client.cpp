@@ -9,34 +9,37 @@
 #include "Controller/Controller.cpp"
 
 
-#define MAX 300
+#define MAX 1000
 #define PORT 8080
 #define SA struct sockaddr
-void func(int sockfd)
-{
+void func(int sockfd, char buff[MAX]){
     char buff[MAX];
     int n;
     for (;;) {
-        bzero(buff, sizeof(buff));
+        /*bzero(buff, sizeof(buff));
         printf("Enter the string : ");
-        n = 0;
-        while ((buff[n++] = getchar()) != '\n')
-            ;
+        n = 1;
+
+
+        buff[0] = '{';
+        while ((buff[n++] = getchar()) != '\n');
+        buff[n++] = '}';
+         */
         write(sockfd, buff, sizeof(buff));
         bzero(buff, sizeof(buff));
         read(sockfd, buff, sizeof(buff));
         printf("Se lee el Json:");
         readJson(buff);
         printf("From Server : %s", buff);
-        if ((strncmp(buff, "exit", 4)) == 0) {
+        printf("\n");
+        if ((strncmp(buff, "{exit}", 4)) == 0) {
             printf("Client Exit...\n");
             break;
         }
     }
 }
 
-int main()
-{
+int start(char buff[MAX]){
     int sockfd, connfd;
     struct sockaddr_in servaddr, cli;
     // socket create and varification

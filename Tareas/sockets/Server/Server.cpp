@@ -8,7 +8,7 @@
 #include <cstdio>
 #include "Controller/Controller.cpp"
 
-#define MAX 300
+#define MAX 1000
 #define PORT 8080
 #define SA struct sockaddr
 
@@ -17,10 +17,9 @@
 
 
 // Function designed for chat between client and server. 
-void func(int sockfd)
-{
+void func(int sockfd, char buff[MAX]){
     char buff[MAX];
-    char json[MAX + 2];
+    c
 
     int n;
     // infinite loop for chat
@@ -31,19 +30,21 @@ void func(int sockfd)
         read(sockfd, buff, sizeof(buff));
         // print buffer which contains the client contents
         printf("From client: %s",buff);
-        //fillArray(json,buff);
+        printf("\n");
         printf("Se lee el Json: ");
-        readJson(json);
+        readJson(buff);
         printf("\n");
         printf("To client : ");
 
-
+        /*
         bzero(buff, MAX);
         n = 1;
         // copy server message in the buffer
         buff[0] = '{';
         while ((buff[n++] =  getchar()) != '\n');
         buff[n++] = '}';
+        printf("\n");
+         */
 
 
 
@@ -59,7 +60,7 @@ void func(int sockfd)
 }
 
 // Driver function 
-int main()
+int start(char buff[MAX])
 {
     int sockfd, connfd, len;
     struct sockaddr_in servaddr, cli;
