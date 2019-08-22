@@ -8,36 +8,30 @@
 #include <gtkmm-3.0/gtkmm.h>
 
 
-class Mainwindow : public Gtk::Window{
+class window : public Gtk::Window{
 
     //Constructor
 public:
-    Mainwindow();
-    virtual ~Mainwindow();
+    window();
+    virtual ~window();
 
 protected:
 
-    void on_cell_data_extra(const Gtk::TreeModel::const_iterator& iter);
+
 
     //Signal handlers:
-    void    on_button_s();
-    void    on_combo_changed();
+    void send_Data();
+    void listBtn_clicked();
+    void TreeBtn_clicked();
+    void charge_Data();
+    void on_treeview_row_activated(const Gtk::TreeModel::Path& path, Gtk::TreeViewColumn* column);
 
-    //Tree model columns:
-    class ModelColumns : public Gtk::TreeModel::ColumnRecord{
-    public:
-        ModelColumns(){
-            add(m_col_list); add(m_col_tree); }
 
-        Gtk::TreeModelColumn<Glib::ustring> m_col_list;
-        Gtk::TreeModelColumn<Glib::ustring> m_col_tree;
-    };
-    ModelColumns m_Columns;
 
-    //Child widgets:
-    Gtk::ComboBox m_Combo;
-    Gtk::CellRenderText m_cell;
-    Glib::RefPtr<Gtr::ListStore> m_refTreeModel;
+
+
+
+
 
 
     //Member widgets:
@@ -46,16 +40,47 @@ protected:
     Gtk::HBox textBx;
     //TextView related data
     Gtk::TextView msgRcv;
-    Glib::RefPtr<Gtk::TextBuffer> textBfr;
+
     //Selecting data structure related data
-    Gtk::ListBox selectStct;
     Gtk::Label selectInst;
     Gtk::VBox selecCnt;
+    Gtk::VBox selectStct;
 
     Gtk::Entry msgEnt;
 
 
+    //Child widgets:
+    Gtk::CheckButton listBtn;
+    Gtk::CheckButton TreeBtn;
+
+
+    //Tree model columns:
+    class ModelColumns : public Gtk::TreeModel::ColumnRecord
+    {
+    public:
+        void add_childrow();
+        ModelColumns()
+        { add(m_col_id); add(m_col_name); }
+
+        Gtk::TreeModelColumn<int> m_col_id;
+        Gtk::TreeModelColumn<Glib::ustring> m_col_name;
+    };
+
+    ModelColumns m_Columns;
+
+    //Child widgets:
+    Gtk::Box m_VBox;
+
+    Gtk::ScrolledWindow m_ScrolledWindow;
+    Gtk::TreeView m_TreeView;
+    Glib::RefPtr<Gtk::TreeStore> m_refTreeModel;
+
+    Gtk::Box m_ButtonBox;
+
 };
+
+
+
 
 
 #endif //SOCKETS_MAINWINDOW_H
